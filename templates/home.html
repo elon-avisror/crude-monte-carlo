@@ -47,82 +47,102 @@
           margin-top:-2px;
         }
       #dot1{
+          display: none;
           left: 669px;
           top: 326px;
       }
       #dot2{
+        display: none;
           left: 606px;
           top: 284px;
       }
       #dot3{
+        display: none;
           left: 609px;
           top: 199px;
       }
       #dot4{
+        display: none;
           left: 731px;
           top: 204px;
         }
       #dot5{
+        display: none;
           left: 735px;
           top: 283px;
       }
       #dot6{
+        display: none;
           left: 823px;
           top: 298px;
       }
       #dot7{
+        display: none;
           left: 792px;
           top: 387px;
       }
       #dot8{
+        display: none;
           left: 661px;
           top: 391px;
       }
       #dot9{
+        display: none;
           left: 536px;
           top: 384px;
       }
       #dot10{
+        display: none;
           left: 513px;
           top: 286px;
       }
       #dot11{
+        display: none;
           left: 492px;
           top: 202px;
       }
       #dot12{
+        display: none;
           left: 571px;
           top: 146px;
       }
       #dot13{
+        display: none;
           left: 661px;
           top: 94px;
       }
       #dot14{
+        display: none;
           left: 759px;
           top: 149px;
       }
       #dot15{
+        display: none;
           left: 850px;
           top: 208px;
       }
       #dot16{
+        display: none;
           left: 944px;
           top: 113px;
       }
       #dot17{
+        display: none;
           left: 944px;
           top: 455px;
       }
       #dot18{
+        display: none;
           left: 406px;
           top: 454px;
       }
       #dot19{
+        display: none;
           left: 406px;
           top: 113px;
       }
       #dot20{
+        display: none;
           left: 661px;
           top: 3px;
       }
@@ -230,6 +250,11 @@ hr{
   margin-bottom: 2rem;
 }
 .Table_container4{
+  display: inline-block;
+  width: 49%;
+  margin-bottom: 2rem;
+}
+.Table_container5{
   display: inline-block;
   width: 49%;
   margin-bottom: 2rem;
@@ -830,7 +855,7 @@ table, th, td {
                 type: 'POST',
                 success: function(response)
                 {
-                  console.log(response);
+                  //console.log(response);
                   $(".Calculating").hide();
                   $("#task3Table").empty();
                   $("#task3Table").append('<tr style="font-weight: bold;"><td>propebilities</td><td> 10000</td></tr>')
@@ -844,6 +869,8 @@ table, th, td {
                   Object.keys(dictPoint).forEach(function(key) {
                       $('#task4Table tr:last').after('<tr><td>'+key+'</td><td>'+dictPoint[key]+'</td></tr>');
                   });
+                  dictRelativeError=response['relativeError']
+                  console.log('dictRelativeError: ' + dictRelativeError);
                   $('#myModal3').css('display','block');
                   
                 },
