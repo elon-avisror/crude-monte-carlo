@@ -1,0 +1,863 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+      body{
+        padding: 0;
+        margin: 0;
+      }
+
+      .container{
+        position: absolute;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+
+      }
+      .container_graf
+      {
+        position: relative;
+        display: inline-block;
+        height: 550px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .dot {
+        height: 50px;
+        width: 50px;
+        background-color: #bbb;
+        border-radius: 50%;
+        border: 1px solid;
+        display: inline-block;
+        text-align: center;
+        position: absolute;
+        z-index: 1;
+      }
+      .dot:after{
+          position:absolute;
+          top:50%;
+          left:50%;
+          background-color:black;
+          width:4px;
+          height:4px;
+          border-radius:50%;
+          margin-left:-2px;
+          margin-top:-2px;
+        }
+      #dot1{
+          left: 669px;
+          top: 326px;
+      }
+      #dot2{
+          left: 606px;
+          top: 284px;
+      }
+      #dot3{
+          left: 609px;
+          top: 199px;
+      }
+      #dot4{
+          left: 731px;
+          top: 204px;
+        }
+      #dot5{
+          left: 735px;
+          top: 283px;
+      }
+      #dot6{
+          left: 823px;
+          top: 298px;
+      }
+      #dot7{
+          left: 792px;
+          top: 387px;
+      }
+      #dot8{
+          left: 661px;
+          top: 391px;
+      }
+      #dot9{
+          left: 536px;
+          top: 384px;
+      }
+      #dot10{
+          left: 513px;
+          top: 286px;
+      }
+      #dot11{
+          left: 492px;
+          top: 202px;
+      }
+      #dot12{
+          left: 571px;
+          top: 146px;
+      }
+      #dot13{
+          left: 661px;
+          top: 94px;
+      }
+      #dot14{
+          left: 759px;
+          top: 149px;
+      }
+      #dot15{
+          left: 850px;
+          top: 208px;
+      }
+      #dot16{
+          left: 944px;
+          top: 113px;
+      }
+      #dot17{
+          left: 944px;
+          top: 455px;
+      }
+      #dot18{
+          left: 406px;
+          top: 454px;
+      }
+      #dot19{
+          left: 406px;
+          top: 113px;
+      }
+      #dot20{
+          left: 661px;
+          top: 3px;
+      }
+      #content{
+  position:relative;
+}
+
+.line{
+  position:absolute;
+  width:2px;
+  background-color:red;
+  color:blue;
+  z-index: 0;
+} 
+.btn-success{
+      color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+
+}
+.btn-warning{
+      color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+hr{
+  border: 2px solid;
+}
+.terminals_container{
+      display: inline-block;
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    font-size: 2rem;
+}
+.task_container{
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  margin-top: 1rem;
+}
+.w_33{
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+.Calculating{
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 5rem;
+
+}
+
+
+.Table_container1{
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.Table_container2{
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.Table_container3{
+  display: inline-block;
+  width: 49%;
+  margin-bottom: 2rem;
+}
+.Table_container4{
+  display: inline-block;
+  width: 49%;
+  margin-bottom: 2rem;
+}
+table, th, td {
+  border: 1px solid black;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close1 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close1:hover,
+.close1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* The Close Button */
+.close2 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* The Close Button */
+.close3 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close3:hover,
+.close3:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.canvas_container{
+    left: 8rem;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 8rem;
+}
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="content">
+    <div class="container">
+      <div  class="container_graf">
+        <div class="dot" id="dot1">1</div>
+        <div class="dot" id="dot2" >2</div>
+        <div class="dot" id="dot3">3</div>
+        <div class="dot" id="dot4">4</div>
+        <div class="dot" id="dot5">5</div>
+        <div class="dot" id="dot6">6</div>
+        <div class="dot" id="dot7">7</div>
+        <div class="dot" id="dot8">8</div>
+        <div class="dot" id="dot9">9</div>
+        <div class="dot" id="dot10">10</div>
+        <div class="dot" id="dot11">11</div>
+        <div class="dot" id="dot12">12</div>
+        <div class="dot" id="dot13">13</div>
+        <div class="dot" id="dot14">14</div>
+        <div class="dot" id="dot15">15</div>
+        <div class="dot" id="dot16">16</div>
+        <div class="dot" id="dot17">17</div>
+        <div class="dot" id="dot18">18</div>
+        <div class="dot" id="dot19">19</div>
+        <div class="dot" id="dot20">20</div>
+        <div class ="line" id="line1"></div>
+        <div class ="line" id="line2"></div>
+        <div class ="line" id="line3"></div>
+        <div class ="line" id="line4"></div>
+        <div class ="line" id="line5"></div>
+        <div class ="line" id="line6"></div>
+        <div class ="line" id="line7"></div>
+        <div class ="line" id="line8"></div>
+        <div class ="line" id="line9"></div>
+        <div class ="line" id="line10"></div>
+        <div class ="line" id="line11"></div>
+        <div class ="line" id="line12"></div>
+        <div class ="line" id="line13"></div>
+        <div class ="line" id="line14"></div>
+        <div class ="line" id="line15"></div>
+        <div class ="line" id="line16"></div>
+        <div class ="line" id="line17"></div>
+        <div class ="line" id="line18"></div>
+        <div class ="line" id="line19"></div>
+        <div class ="line" id="line20"></div>
+        <div class ="line" id="line21"></div>
+        <div class ="line" id="line22"></div>
+        <div class ="line" id="line23"></div>
+        <div class ="line" id="line24"></div>
+        <div class ="line" id="line25"></div>
+        <div class ="line" id="line26"></div>
+        <div class ="line" id="line27"></div>
+        <div class ="line" id="line28"></div>
+        <div class ="line" id="line29"></div>
+        <div class ="line" id="line30"></div>
+        <div class="terminals_container">
+          <div>
+          terminals:
+          <select id = "terminals_select" name="cars" multiple>
+            <option {% if 1 in terminals %} selected {% endif %} value="1" >1</option>
+            <option {% if 2 in terminals %} selected {% endif %} value="2" >2</option>
+            <option {% if 3 in terminals %} selected {% endif %} value="3" >3</option>
+            <option {% if 4 in terminals %} selected {% endif %} value="4" >4</option>
+            <option {% if 5 in terminals %} selected {% endif %} value="5">5</option>
+            <option {% if 6 in terminals %} selected {% endif %} value="6">6</option>
+            <option {% if 7 in terminals %} selected {% endif %} value="7">7</option>
+            <option {% if 8 in terminals %} selected {% endif %} value="8">8</option>
+            <option {% if 9 in terminals %} selected {% endif %} value="9">9</option>
+            <option {% if 10 in terminals %} selected {% endif %} value="10">10</option>
+            <option {% if 11 in terminals %} selected {% endif %} value="11">11</option>
+            <option {% if 12 in terminals %} selected {% endif %} value="12">12</option>
+            <option {% if 13 in terminals %} selected {% endif %} value="13">13</option>
+            <option {% if 14 in terminals %} selected {% endif %} value="14">14</option>
+            <option {% if 15 in terminals %} selected {% endif %} value="15">15</option>
+            <option {% if 16 in terminals %} selected {% endif %} value="16">16</option>
+            <option {% if 17 in terminals %} selected {% endif %} value="17">17</option>
+            <option {% if 18 in terminals %} selected {% endif %} value="18">18</option>
+            <option {% if 19 in terminals %} selected {% endif %} value="19">19</option>
+            <option {% if 20 in terminals %} selected {% endif %} value="20">20</option>
+          </select>
+        </div>
+          <div class="btn">
+              <button type="button" class="btn-success button_terminals">ok</button>
+          </div> 
+        </div>
+      </div>
+      <div class="Calculating" style="display: none;">Calculating...</div>
+
+      <hr>
+      <div class="task_container">
+        <div class="w_33">
+          <button type="button" data-task="Task1" class="btn-warning Task1">Task1</button>
+        </div>
+        <div class="w_33">
+            <button type="button" data-task="Task2_a" class="btn-warning Task2_a">Task2_a</button>
+        </div>
+        <div class="w_33">
+              <button type="button" data-task="Task2_b" class="btn-warning Task2_b">Task2_b</button>
+        </div>
+      </div>
+      <div id="myModal1" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close1">&times;</span>
+            <div class="Table_container1">
+              <table id="task1Table" style="width: 100%;text-align: center;">
+              </table>
+            </div>
+          </div>
+      </div>
+      <div id="myModal2" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close2">&times;</span>
+            <div class="Table_container2">
+              <table id="task2Table" style="width: 100%;text-align: center;">
+              </table>
+            </div>
+            <div class="canvas_container">
+              <canvas id="canvas" width="1100" height="600"></canvas>
+            </div>
+          </div>
+      </div>
+      <div id="myModal3" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close3">&times;</span>
+            <div>
+              <div class="Table_container3">
+                <table id="task3Table" style="width: 100%;text-align: center;">
+                </table>
+              </div>
+              <div class="Table_container4">
+                <table id="task4Table" style="width: 100%;text-align: center;">
+                </table>
+              </div>
+            </div>
+            
+          </div>
+      </div>
+
+    </div>
+
+    
+    <script>
+      var terminals = {{ terminals|tojson }}
+      for (var i = terminals.length - 1; i >= 0; i--) {
+        $('#dot'+terminals[i]).css("background-color", "#4CAF50;");
+      }
+
+      function adjustLine(from, to, line){
+          var fT = from.offsetTop  + from.offsetHeight/2;
+          var tT = to.offsetTop    + to.offsetHeight/2;
+          var fL = from.offsetLeft + from.offsetWidth/2;
+          var tL = to.offsetLeft   + to.offsetWidth/2;
+          
+          var CA   = Math.abs(tT - fT);
+          var CO   = Math.abs(tL - fL);
+          var H    = Math.sqrt(CA*CA + CO*CO);
+          var ANG  = 180 / Math.PI * Math.acos( CA/H );
+
+          if(tT > fT){
+              var top  = (tT-fT)/2 + fT;
+          }else{
+              var top  = (fT-tT)/2 + tT;
+          }
+          if(tL > fL){
+              var left = (tL-fL)/2 + fL;
+          }else{
+              var left = (fL-tL)/2 + tL;
+          }
+          if(( fT < tT && fL < tL) || ( tT < fT && tL < fL) || (fT > tT && fL > tL) || (tT > fT && tL > fL)){
+              ANG *= -1;
+            }
+            top-= H/2;
+
+            line.style["-webkit-transform"] = 'rotate('+ ANG +'deg)';
+            line.style["-moz-transform"] = 'rotate('+ ANG +'deg)';
+            line.style["-ms-transform"] = 'rotate('+ ANG +'deg)';
+            line.style["-o-transform"] = 'rotate('+ ANG +'deg)';
+            line.style["-transform"] = 'rotate('+ ANG +'deg)';
+            line.style.top    = top+'px';
+            line.style.left   = left+'px';
+            line.style.height = H + 'px';
+          }
+        adjustLine(document.getElementById('dot1'),document.getElementById('dot2'),document.getElementById('line1'));
+        adjustLine(document.getElementById('dot2'),document.getElementById('dot3'),document.getElementById('line2'));
+        adjustLine(document.getElementById('dot3'),document.getElementById('dot4'),document.getElementById('line3'));
+        adjustLine(document.getElementById('dot4'),document.getElementById('dot5'),document.getElementById('line4'));
+        adjustLine(document.getElementById('dot5'),document.getElementById('dot1'),document.getElementById('line5'));
+        adjustLine(document.getElementById('dot6'),document.getElementById('dot7'),document.getElementById('line6'));
+        adjustLine(document.getElementById('dot7'),document.getElementById('dot8'),document.getElementById('line7'));
+        adjustLine(document.getElementById('dot8'),document.getElementById('dot9'),document.getElementById('line8'));
+        adjustLine(document.getElementById('dot9'),document.getElementById('dot10'),document.getElementById('line9'));
+        adjustLine(document.getElementById('dot10'),document.getElementById('dot11'),document.getElementById('line10'));
+        adjustLine(document.getElementById('dot12'),document.getElementById('dot11'),document.getElementById('line11'));
+        adjustLine(document.getElementById('dot12'),document.getElementById('dot13'),document.getElementById('line12'));
+        adjustLine(document.getElementById('dot14'),document.getElementById('dot13'),document.getElementById('line13'));
+        adjustLine(document.getElementById('dot14'),document.getElementById('dot15'),document.getElementById('line14'));
+        adjustLine(document.getElementById('dot15'),document.getElementById('dot6'),document.getElementById('line15'));
+        adjustLine(document.getElementById('dot16'),document.getElementById('dot17'),document.getElementById('line16'));
+        adjustLine(document.getElementById('dot17'),document.getElementById('dot18'),document.getElementById('line17'));
+        adjustLine(document.getElementById('dot18'),document.getElementById('dot19'),document.getElementById('line18'));
+        adjustLine(document.getElementById('dot19'),document.getElementById('dot20'),document.getElementById('line19'));
+        adjustLine(document.getElementById('dot20'),document.getElementById('dot16'),document.getElementById('line20'));
+        adjustLine(document.getElementById('dot15'),document.getElementById('dot16'),document.getElementById('line21'));
+        adjustLine(document.getElementById('dot7'),document.getElementById('dot17'),document.getElementById('line22'));
+        adjustLine(document.getElementById('dot9'),document.getElementById('dot18'),document.getElementById('line23'));
+        adjustLine(document.getElementById('dot11'),document.getElementById('dot19'),document.getElementById('line24'));
+        adjustLine(document.getElementById('dot20'),document.getElementById('dot20'),document.getElementById('line25'));
+        adjustLine(document.getElementById('dot1'),document.getElementById('dot8'),document.getElementById('line26'));
+        adjustLine(document.getElementById('dot2'),document.getElementById('dot10'),document.getElementById('line27'));
+        adjustLine(document.getElementById('dot3'),document.getElementById('dot12'),document.getElementById('line28'));
+        adjustLine(document.getElementById('dot4'),document.getElementById('dot14'),document.getElementById('line29'));
+        adjustLine(document.getElementById('dot5'),document.getElementById('dot6'),document.getElementById('line30'));
+          var CanvasChart = function () {
+            var ctx;
+            var margin = { top: 40, left: 75, right: 0, bottom: 75 };
+            var chartHeight, chartWidth, yMax, xMax, data;
+            var maxYValue = 0;
+            var ratio = 0;
+            var renderType = { lines: 'lines', points: 'points' };
+
+            var render = function(canvasId, dataObj) {
+                data = dataObj;
+                getMaxDataYValue();
+                var canvas = document.getElementById(canvasId);
+                chartHeight = canvas.getAttribute('height');
+                chartWidth = canvas.getAttribute('width');
+                xMax = chartWidth - (margin.left + margin.right);
+                yMax = chartHeight - (margin.top + margin.bottom);
+                ratio = yMax / maxYValue;
+                ctx = canvas.getContext("2d");
+                renderChart();
+            };
+
+            var renderChart = function () {
+                renderBackground();
+                renderText();
+                renderLinesAndLabels();
+
+                //render data based upon type of renderType(s) that client supplies
+                if (data.renderTypes == undefined || data.renderTypes == null) data.renderTypes = [renderType.lines];
+                for (var i = 0; i < data.renderTypes.length; i++) {
+                    renderData(data.renderTypes[i]);
+                }
+            };
+
+            var getMaxDataYValue = function () {
+                for (var i = 0; i < data.dataPoints.length; i++) {
+                    if (data.dataPoints[i].y > maxYValue) maxYValue = data.dataPoints[i].y;
+                }
+            };
+
+            var renderBackground = function() {
+                var lingrad = ctx.createLinearGradient(margin.left, margin.top, xMax - margin.right, yMax);
+                lingrad.addColorStop(0.0, '#D4D4D4');
+                lingrad.addColorStop(0.2, '#fff');
+                lingrad.addColorStop(0.8, '#fff');
+                lingrad.addColorStop(1, '#D4D4D4');
+                ctx.fillStyle = lingrad;
+                ctx.fillRect(margin.left, margin.top, xMax - margin.left, yMax - margin.top);
+                ctx.fillStyle = 'black';
+            };
+
+            var renderText = function() {
+                var labelFont = (data.labelFont != null) ? data.labelFont : '20pt Arial';
+                ctx.font = labelFont;
+                ctx.textAlign = "center";
+
+                //Title
+                var txtSize = ctx.measureText(data.title);
+                ctx.fillText(data.title, (chartWidth / 2), (margin.top / 2));
+
+                //X-axis text
+                txtSize = ctx.measureText(data.xLabel);
+                ctx.fillText(data.xLabel, margin.left + (xMax / 2) - (txtSize.width / 2), yMax + (margin.bottom / 1.2));
+
+                //Y-axis text
+                ctx.save();
+                ctx.rotate(-Math.PI / 2);
+                ctx.font = labelFont;
+                ctx.fillText(data.yLabel, (yMax / 2) * -1, margin.left / 4);
+                ctx.restore();
+            };
+
+            var renderLinesAndLabels = function () {
+                //Vertical guide lines
+                var yInc = yMax / data.dataPoints.length;
+                var yPos = 0;
+                var yLabelInc = (maxYValue * ratio) / data.dataPoints.length;
+                var xInc = getXInc();
+                var xPos = margin.left;
+                for (var i = 0; i < data.dataPoints.length; i++) {
+                    yPos += (i == 0) ? margin.top : yInc;
+                    //Draw horizontal lines
+                    drawLine(margin.left, yPos, xMax, yPos, '#E8E8E8');
+
+                    //y axis labels
+                    ctx.font = (data.dataPointFont != null) ? data.dataPointFont : '10pt Calibri';
+                    var txt = Math.round(maxYValue - ((i == 0) ? 0 : yPos / ratio));
+                    var txtSize = ctx.measureText(txt);
+                    ctx.fillText(txt, margin.left - ((txtSize.width >= 14) ? txtSize.width : 10) - 7, yPos + 4);
+
+                    //x axis labels
+                    txt = data.dataPoints[i].x;
+                    txtSize = ctx.measureText(txt);
+                    ctx.fillText(txt, xPos, yMax + (margin.bottom / 3));
+                    xPos += xInc;
+                }
+
+                //Vertical line
+                drawLine(margin.left, margin.top, margin.left, yMax, 'black');
+
+                //Horizontal Line
+                drawLine(margin.left, yMax, xMax, yMax, 'black');
+            };
+
+            var renderData = function(type) {
+                var xInc = getXInc();
+                var prevX = 0, 
+                    prevY = 0;
+
+                for (var i = 0; i < data.dataPoints.length; i++) {
+                    var pt = data.dataPoints[i];
+                    var ptY = (maxYValue - pt.y) * ratio;
+                    if (ptY < margin.top) ptY = margin.top;
+                    var ptX = (i * xInc) + margin.left;
+
+                    if (i > 0 && type == renderType.lines) {
+                        //Draw connecting lines
+                        drawLine(ptX, ptY, prevX, prevY, 'black', 2);
+                    }
+
+                    if (type == renderType.points) {
+                        var radgrad = ctx.createRadialGradient(ptX, ptY, 8, ptX - 5, ptY - 5, 0);
+                        radgrad.addColorStop(0, 'Green');
+                        radgrad.addColorStop(0.9, 'White');
+                        ctx.beginPath();
+                        ctx.fillStyle = radgrad;
+                        //Render circle
+                        ctx.arc(ptX, ptY, 8, 0, 2 * Math.PI, false)
+                        ctx.fill();
+                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = '#000';
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+
+                    prevX = ptX;
+                    prevY = ptY;
+                }
+            };
+
+            var getXInc = function() {
+                return Math.round(xMax / data.dataPoints.length) - 1;
+            };
+
+            var drawLine = function(startX, startY, endX, endY, strokeStyle, lineWidth) {
+                if (strokeStyle != null) ctx.strokeStyle = strokeStyle;
+                if (lineWidth != null) ctx.lineWidth = lineWidth;
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+                ctx.closePath();
+            };
+
+            return {
+                renderType: renderType,
+                render: render
+            };
+        } ();
+
+        function draw(graphDict) {
+          arr=[]
+          Object.keys(graphDict).forEach(function(key) {
+            if(key!=1)
+            arr.push({x:String(key),y:String(graphDict[key]*10000)})
+                  });
+          arr.push({x:String(1),y:String(graphDict[1])})
+          var dataDef = { title: "Time / 10000",
+                          xLabel: 'Time', 
+                          yLabel: '10000',
+                          labelFont: '19pt Arial', 
+                          dataPointFont: '10pt Arial',
+                          renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.points],
+                          dataPoints: arr
+                         };
+          CanvasChart.render('canvas', dataDef);
+        }
+
+        $( ".button_terminals" ).click(function() {
+            if($("#terminals_select option:selected").length !=3)
+            {
+              alert("Must select 3 terminals!!");
+              return false;
+            }
+            $('.dot').css("background-color", "#bbb");
+            var selectedArray = [];
+            terminals=[]
+            $("#terminals_select option:selected").each(function()
+              {
+                $("#dot"+$(this).val()).css("background-color", "#4CAF50;");
+                selectedArray.push($(this).val());
+                terminals.push($(this).val());
+              });
+            $.ajax({
+                url: '/change_teminals',
+                dataType: "json",
+                data:{"selectedArray":selectedArray} ,
+                type: 'POST',
+                success: function(response)
+                {
+                  console.log('ok!');
+                },
+                error: function(error)
+                {
+                    console.log(error);
+                }
+              });
+            });
+        $( ".Task1" ).click(function() {
+          if(terminals.length !=3)
+            {
+              alert("Please select 3 terminals before selecting task!");
+              return false;
+            }
+          var send=$(this).attr("data-task");
+          $(".Calculating").show();
+
+          $.ajax({
+                url: '/play_task1',
+                dataType: "json",
+                data:{"Task":send} ,
+                type: 'POST',
+                success: function(response)
+                {
+                  $(".Calculating").hide();
+                  $("#task1Table").empty();
+                  $("#task1Table").append('<tr style="font-weight: bold;"><td>propebilities</td><td> 1000</td><td> 10000</td></tr>')
+                  Object.keys(response).forEach(function(key) {
+                    $('#task1Table tr:last').after('<tr><td>'+key+'</td><td>'+response[key][0]+'</td><td>'+response[key][1]+'</td></tr>');
+                  });
+                  $('#myModal1').css('display','block');
+                  
+                },
+                error: function(error)
+                {
+                    console.log(error);
+                }
+              });
+        });
+        $('.close1').click(function(){
+            $('#myModal1').css('display','none');
+        });
+
+        $( ".Task2_a" ).click(function() {
+          if(terminals.length !=3)
+            {
+              alert("Please select 3 terminals before selecting task!");
+              return false;
+            }
+          var send=$(this).attr("data-task");
+          $(".Calculating").show();
+
+          $.ajax({
+                url: '/play_task2_a',
+                dataType: "json",
+                data:{"Task":send} ,
+                type: 'POST',
+                success: function(response)
+                {
+                  console.log(response);
+                  $(".Calculating").hide();
+                  $("#task2Table").empty();
+                  $("#task2Table").append('<tr style="font-weight: bold;"><td>time</td><td> 10000</td></tr>')
+                  graphDict={}
+                  Object.keys(response).forEach(function(key) {
+                    if(key!= 1)
+                    {
+                      $('#task2Table tr:last').after('<tr><td>'+key+'</td><td>'+response[key]+'</td></tr>');
+                      graphDict[key]=response[key]
+                    }
+                  });
+                    graphDict[1]=response[1]
+                  draw(graphDict)
+                  $('#task2Table tr:last').after('<tr><td>1</td><td>'+response[1]+'</td></tr>');
+                  $('#myModal2').css('display','block');
+                  
+                },
+                error: function(error)
+                {
+                    console.log(error);
+                }
+              });
+        });
+        $('.close2').click(function(){
+            $('#myModal2').css('display','none');
+        });
+        $( ".Task2_b" ).click(function() {
+          if(terminals.length !=3)
+            {
+              alert("Please select 3 terminals before selecting task!");
+              return false;
+            }
+          var send=$(this).attr("data-task");
+          $(".Calculating").show();
+
+          $.ajax({
+                url: '/play_task2_b',
+                dataType: "json",
+                data:{"Task":send} ,
+                type: 'POST',
+                success: function(response)
+                {
+                  console.log(response);
+                  $(".Calculating").hide();
+                  $("#task3Table").empty();
+                  $("#task3Table").append('<tr style="font-weight: bold;"><td>propebilities</td><td> 10000</td></tr>')
+                  dictE=response['E']
+                  Object.keys(dictE).forEach(function(key) {
+                      $('#task3Table tr:last').after('<tr><td>e^-0.5</td><td>'+dictE[key]+'</td></tr>');
+                  });
+                  $("#task4Table").empty();
+                  $("#task4Table").append('<tr style="font-weight: bold;"><td>time</td><td> 10000</td></tr>')
+                  dictPoint=response['dictPoint']
+                  Object.keys(dictPoint).forEach(function(key) {
+                      $('#task4Table tr:last').after('<tr><td>'+key+'</td><td>'+dictPoint[key]+'</td></tr>');
+                  });
+                  $('#myModal3').css('display','block');
+                  
+                },
+                error: function(error)
+                {
+                    console.log(error);
+                }
+              });
+        });
+        $('.close3').click(function(){
+            $('#myModal3').css('display','none');
+        });
+
+    </script>
+  </body>
+</html>
+
