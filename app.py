@@ -134,6 +134,7 @@ def find_random_path(graph, start, end, path):  # find path with backtracking
 
 
 def task_1():
+    print('Debugging!!!')
     ansDict = {}
     m1 = 1000
     m2 = 10000
@@ -214,11 +215,14 @@ def task_2_B():
             g.update_graph(down_edges)
             if g.isUp(teminals[0], teminals[1], teminals[2]):
                 dict_E[m] += 1
+
     dictE = {}
     relativeErrorA=0
     relativeErrorB=0
+
     for t in (1, 2, 3, 4, 5):
         dictE[t] = dict_E[t]/10000
+
     cnt1=0
     for i in (1, 2, 3, 4, 5):
         for j in (1, 2, 3, 4, 5):
@@ -234,18 +238,22 @@ def task_2_B():
                 cnt2+=1
 
     relativeErrorA/=cnt1
-    relativeErrorA/=100
+    relativeErrorA/=10000
+
     relativeErrorB/=cnt2
+    relativeErrorB/=10000
 
     dictAns = {}
+
     dictAns['E'] = dictE
     dictAns['dictPoint'] = dictPoint
+
     dictAns['relativeErrorA'] = relativeErrorA
     dictAns['relativeErrorB'] = relativeErrorB
+
     dictAns['cnt1'] = cnt1
     dictAns['cnt2'] = cnt2
     return dictAns
-
 
 @app.route('/')
 def home():

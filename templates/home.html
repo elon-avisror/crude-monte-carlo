@@ -47,102 +47,102 @@
           margin-top:-2px;
         }
       #dot1{
-          display: none;
+          display: inline-block;
           left: 669px;
           top: 326px;
       }
       #dot2{
-        display: none;
+        display: inline-block;
           left: 606px;
           top: 284px;
       }
       #dot3{
-        display: none;
+        display: inline-block;
           left: 609px;
           top: 199px;
       }
       #dot4{
-        display: none;
+        display: inline-block;
           left: 731px;
           top: 204px;
         }
       #dot5{
-        display: none;
+        display: inline-block;
           left: 735px;
           top: 283px;
       }
       #dot6{
-        display: none;
+        display: inline-block;
           left: 823px;
           top: 298px;
       }
       #dot7{
-        display: none;
+        display: inline-block;
           left: 792px;
           top: 387px;
       }
       #dot8{
-        display: none;
+        display: inline-block;
           left: 661px;
           top: 391px;
       }
       #dot9{
-        display: none;
+        display: inline-block;
           left: 536px;
           top: 384px;
       }
       #dot10{
-        display: none;
+        display: inline-block;
           left: 513px;
           top: 286px;
       }
       #dot11{
-        display: none;
+        display: inline-block;
           left: 492px;
           top: 202px;
       }
       #dot12{
-        display: none;
+        display: inline-block;
           left: 571px;
           top: 146px;
       }
       #dot13{
-        display: none;
+        display: inline-block;
           left: 661px;
           top: 94px;
       }
       #dot14{
-        display: none;
+        display: inline-block;
           left: 759px;
           top: 149px;
       }
       #dot15{
-        display: none;
+        display: inline-block;
           left: 850px;
           top: 208px;
       }
       #dot16{
-        display: none;
+        display: inline-block;
           left: 944px;
           top: 113px;
       }
       #dot17{
-        display: none;
+        display: inline-block;
           left: 944px;
           top: 455px;
       }
       #dot18{
-        display: none;
+        display: inline-block;
           left: 406px;
           top: 454px;
       }
       #dot19{
-        display: none;
+        display: inline-block;
           left: 406px;
           top: 113px;
       }
       #dot20{
-        display: none;
+        display: inline-block;
           left: 661px;
           top: 3px;
       }
@@ -828,7 +828,7 @@ table, th, td {
                   draw(graphDict)
                   $('#task2Table tr:last').after('<tr><td>1</td><td>'+response[1]+'</td></tr>');
                   $('#myModal2').css('display','block');
-                  
+                  console.log('at time 0.8 the result is: 0.4096867');
                 },
                 error: function(error)
                 {
@@ -883,7 +883,7 @@ table, th, td {
                     console.log('B is better: ' + dictRelativeErrorB);
                   else
                     console.log('Even');
-                    
+                  
                   $('#myModal3').css('display','block');
                   
                 },
