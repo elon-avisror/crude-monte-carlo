@@ -215,16 +215,35 @@ def task_2_B():
             if g.isUp(teminals[0], teminals[1], teminals[2]):
                 dict_E[m] += 1
     dictE = {}
-    relativeError=0
+    relativeErrorA=0
+    relativeErrorB=0
     for t in (1, 2, 3, 4, 5):
         dictE[t] = dict_E[t]/10000
-        relativeError+=dictE[t]
+    cnt1=0
+    for i in (1, 2, 3, 4, 5):
+        for j in (1, 2, 3, 4, 5):
+            if i < j:
+                relativeErrorA+=abs(dict_E[i]-dict_E[j])
+                cnt1+=1
 
-    relativeError/=5
+    cnt2=0
+    for i in dict_timepoints_count_up:
+        for j in dict_timepoints_count_up:
+            if i < j:
+                relativeErrorB+=abs(dictPoint[i]-dictPoint[j])
+                cnt2+=1
+
+    relativeErrorA/=cnt1
+    relativeErrorA/=100
+    relativeErrorB/=cnt2
+
     dictAns = {}
     dictAns['E'] = dictE
     dictAns['dictPoint'] = dictPoint
-    dictAns['relativeError'] = relativeError
+    dictAns['relativeErrorA'] = relativeErrorA
+    dictAns['relativeErrorB'] = relativeErrorB
+    dictAns['cnt1'] = cnt1
+    dictAns['cnt2'] = cnt2
     return dictAns
 
 

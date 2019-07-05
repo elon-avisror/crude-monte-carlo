@@ -869,8 +869,21 @@ table, th, td {
                   Object.keys(dictPoint).forEach(function(key) {
                       $('#task4Table tr:last').after('<tr><td>'+key+'</td><td>'+dictPoint[key]+'</td></tr>');
                   });
-                  dictRelativeError=response['relativeError']
-                  console.log('dictRelativeError: ' + dictRelativeError);
+                  dictRelativeErrorA=response['relativeErrorA']
+                  dictRelativeErrorB=response['relativeErrorB']
+                  cnt1=response['cnt1']
+                  cnt2=response['cnt2']
+                  console.log('A: ' + dictRelativeErrorA);
+                  console.log('B: ' + dictRelativeErrorB);
+                  //console.log('cnt1: ' + cnt1);
+                  //console.log('cnt2: ' + cnt2);
+                  if (dictRelativeErrorA < dictRelativeErrorB)
+                    console.log('A is better: ' + dictRelativeErrorA)
+                  else if (dictRelativeErrorB < dictRelativeErrorA)
+                    console.log('B is better: ' + dictRelativeErrorB);
+                  else
+                    console.log('Even');
+                    
                   $('#myModal3').css('display','block');
                   
                 },
